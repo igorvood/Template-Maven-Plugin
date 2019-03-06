@@ -258,7 +258,7 @@
                                 </execution>
                             </executions>
                             <configuration>
-                                <packageName>rumy</packageName>
+                                <packageName>ru.my</packageName>
                                 <bindingDirectory>${project.basedir}/src/main/resources/secondXSD</bindingDirectory>
                                 <schemaDirectory>${project.basedir}/src/main/resources/secondXSD</schemaDirectory>
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>

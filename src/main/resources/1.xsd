@@ -17,7 +17,6 @@
         </xsd:sequence>
     </xsd:complexType>
 
-
     <xsd:complexType name="list_class_tables_type">
         <xsd:sequence minOccurs="2" maxOccurs="unbounded">
             <xsd:element name="list" type="class_tables_type"/>
@@ -26,26 +25,18 @@
 
 
     <xsd:complexType name="class_tables_type">
-        <xsd:group ref="class_tables_group"></xsd:group>
+        <xsd:group ref="class_tables_group"/>
     </xsd:complexType>
 
     <xsd:group name="class_tables_group">
         <xsd:sequence>
-            <xsd:element name="generatingClass" type="type_class"></xsd:element>
+            <xsd:element name="generatingClass" type="type_class"/>
             <xsd:element name="table_list" type="table_list_Type"/>
         </xsd:sequence>
     </xsd:group>
-    <!--
-        <xsd:complexType name="table_class_list_type">
-            <xsd:sequence minOccurs="2" maxOccurs="unbounded">
-                <xsd:element name="table_list" type="table_list_Type"/>
-                <xsd:element name="generatingClass" type="type_class"></xsd:element>
-            </xsd:sequence>
-        </xsd:complexType>
-    -->
 
     <xsd:complexType name="table_list_Type">
-        <xsd:sequence minOccurs="10" maxOccurs="unbounded">
+        <xsd:sequence minOccurs="2" maxOccurs="unbounded">
             <xsd:element name="list_table" type="table_Type"/>
         </xsd:sequence>
     </xsd:complexType>

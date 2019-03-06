@@ -1,11 +1,11 @@
 package ru.vood.plugin;
 
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.springframework.util.Assert;
+import ru.vood1.ClassTablesType;
 import ru.vood1.PluginTines;
 
 import javax.xml.bind.JAXBException;
@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Mojo(name = "setname", defaultPhase = LifecyclePhase.GENERATE_SOURCES, threadSafe = true)
 public class PluginTestParams extends AbstractMojo {
@@ -29,10 +30,10 @@ public class PluginTestParams extends AbstractMojo {
     private String filename;
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() {
         System.out.println("------>" + driverClassName);
-//        System.out.println("------>" + someDataClass);ru.vood:plugin.
         System.out.println("------>" + filename);
+        Assert.notNull(filename, "filename Should be not null");
 
         PluginParamsXml pluginParamsXml = null;
         StringBuilder sb = new StringBuilder();
@@ -42,35 +43,25 @@ public class PluginTestParams extends AbstractMojo {
             System.out.println("------>\n" + sb + "\n");
             final PluginTines pluginTines = pluginParamsXml.xmlToObj(sb.toString());
             System.out.println("pluginTines------>" + toString(pluginTines));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JAXBException | IOException e) {
             e.printStackTrace();
         }
 
     }
 
     public String toString(PluginTines pluginTines) {
-/*
-        System.out.println("pluginTines.getTableClassList().getGeneratingClassesAndTableLISTTypes().getClass() -> " +
-                pluginTines.getTableClassList().getGeneratingClassesAndTableLISTs().getClass());
-*/
+        List<ClassTablesType> lists = pluginTines.getTableClassList().getLists();
+        String s = lists.stream()
+                .map(classTablesType -> "class=" + classTablesType.getGeneratingClass() + " TableList=" + classTablesType.getTableList())
+                .reduce((o, o2) -> o + "\n" + o2)
+                .orElse("");
+
         return "PluginTines{" +
                 "username='" + pluginTines.getUsername() + '\'' +
                 ", password='" + pluginTines.getPassword() + '\'' +
-                ", tableClassList=" + pluginTines.getTableClassList().getLists() +
+                ", tableClassList=" + s +
                 '}';
     }
 
-/*
-    private PluginTines createPluginTines() {
-        PluginTines pluginTines = new PluginTines();
-        pluginTines.setPassword("setPassword");
-        pluginTines.setUsername("setUsername");
-        final TableClassListType value = new TableClassListType();
-        pluginTines.setTableClassList(value);
-        return pluginTines;
-    }
-*/
 
 }

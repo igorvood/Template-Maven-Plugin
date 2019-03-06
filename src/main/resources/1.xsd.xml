@@ -9,27 +9,11 @@
       <table_list>
         <list_table table_name="string" table_owner="string"/>
         <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
       </table_list>
     </list>
     <list>
       <generatingClass>ENUM</generatingClass>
       <table_list>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
-        <list_table table_name="string" table_owner="string"/>
         <list_table table_name="string" table_owner="string"/>
         <list_table table_name="string" table_owner="string"/>
       </table_list>
