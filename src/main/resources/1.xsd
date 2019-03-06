@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:annotation>
+        <xsd:documentation>plugin parameters</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="pluginTines" type="plugin_Tines_type"></xsd:element>
+
+    <xsd:complexType name="plugin_Tines_type">
+        <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="password" type="xsd:string"/>
+            <xsd:element name="url" type="xsd:string"/>
+            <xsd:element name="dataBaseDriver" type="xsd:string"/>
+            <xsd:element name="table_class_list" type="list_class_tables_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="list_class_tables_type">
+        <xsd:sequence minOccurs="2" maxOccurs="unbounded">
+            <xsd:element name="list" type="class_tables_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="class_tables_type">
+        <xsd:group ref="class_tables_group"></xsd:group>
+    </xsd:complexType>
+
+    <xsd:group name="class_tables_group">
+        <xsd:sequence>
+            <xsd:element name="generatingClass" type="type_class"></xsd:element>
+            <xsd:element name="table_list" type="table_list_Type"/>
+        </xsd:sequence>
+    </xsd:group>
+    <!--
+        <xsd:complexType name="table_class_list_type">
+            <xsd:sequence minOccurs="2" maxOccurs="unbounded">
+                <xsd:element name="table_list" type="table_list_Type"/>
+                <xsd:element name="generatingClass" type="type_class"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    -->
+
+    <xsd:complexType name="table_list_Type">
+        <xsd:sequence minOccurs="10" maxOccurs="unbounded">
+            <xsd:element name="list_table" type="table_Type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="table_Type">
+        <xsd:attribute name="table_name" type="xsd:string"/>
+        <xsd:attribute name="table_owner" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="type_class">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ENTITY"/>
+            <xsd:enumeration value="ENUM"/>
+            <xsd:enumeration value="REPOSITORY"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
