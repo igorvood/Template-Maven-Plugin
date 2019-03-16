@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <xsd:annotation>
-        <xsd:documentation>plugin parameters</xsd:documentation>
-    </xsd:annotation>
-
-    <xsd:element name="pluginTines" type="plugin_Tines_type"></xsd:element>
+    <xsd:element name="pluginTines" type="plugin_Tines_type">
+        <xsd:annotation>
+            <xsd:documentation>plugin parameters</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 
     <xsd:complexType name="plugin_Tines_type">
         <xsd:sequence minOccurs="1" maxOccurs="1">
@@ -19,7 +19,7 @@
 
     <xsd:complexType name="list_class_tables_type">
         <xsd:sequence minOccurs="2" maxOccurs="unbounded">
-            <xsd:element name="list" type="class_tables_type"/>
+            <xsd:element name="class_from_tables" type="class_tables_type"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -37,7 +37,7 @@
 
     <xsd:complexType name="table_list_Type">
         <xsd:sequence minOccurs="2" maxOccurs="unbounded">
-            <xsd:element name="list_table" type="table_Type"/>
+            <xsd:element name="table" type="table_Type"/>
         </xsd:sequence>
     </xsd:complexType>
 
