@@ -228,7 +228,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <generatePackage>ru.vood1</generatePackage>
+                    <generatePackage>ru.vood.templatePlugin.generated.fromXSD</generatePackage>
                     <schemaDirectory>src/main/resources</schemaDirectory>
                     <schemaIncludes>
                         <include>1.xsd</include>
@@ -245,9 +245,9 @@
 
             <!-- tag::xsd[] -->
             <!--
-                        <plugin>
+                        <templatePlugin>
                             <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>jaxb2-maven-plugin</artifactId>
+                            <artifactId>jaxb2-maven-templatePlugin</artifactId>
                             <version>1.6</version>
                             <executions>
                                 <execution>
@@ -264,7 +264,7 @@
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <clearOutputDir>true</clearOutputDir>
                             </configuration>
-                        </plugin>
+                        </templatePlugin>
             -->
 
         </plugins>

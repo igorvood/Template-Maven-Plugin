@@ -1,12 +1,12 @@
-package ru.vood.plugin;
+package ru.vood.templatePlugin;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.springframework.util.Assert;
-import ru.vood1.ClassTablesType;
-import ru.vood1.PluginTines;
+import ru.vood.templatePlugin.generated.fromXSD.ClassFromTablesType;
+import ru.vood.templatePlugin.generated.fromXSD.PluginTines;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -21,10 +21,9 @@ public class PluginTestParams extends AbstractMojo {
     @Parameter(property = "driverClassName")
     private String driverClassName;
 
-/*
+
     @Parameter(property = "someDataClass")
     private SomeDataClass someDataClass;
-*/
 
     @Parameter(property = "filename")
     private String filename;
@@ -33,6 +32,7 @@ public class PluginTestParams extends AbstractMojo {
     public void execute() {
         System.out.println("------>" + driverClassName);
         System.out.println("------>" + filename);
+        System.out.println("------>" + someDataClass);
         Assert.notNull(filename, "filename Should be not null");
 
         PluginParamsXml pluginParamsXml = null;
@@ -50,7 +50,7 @@ public class PluginTestParams extends AbstractMojo {
     }
 
     public String toString(PluginTines pluginTines) {
-        List<ClassTablesType> lists = pluginTines.getTableClassList().getLists();
+        List<ClassFromTablesType> lists = pluginTines.getTableClassList().getClassFromTables();
         String s = lists.stream()
                 .map(classTablesType -> "class=" + classTablesType.getGeneratingClass() + " TableList=" + classTablesType.getTableList())
                 .reduce((o, o2) -> o + "\n" + o2)

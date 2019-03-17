@@ -1,7 +1,7 @@
-package ru.vood.plugin;
+package ru.vood.templatePlugin;
 
 
-import ru.vood1.PluginTines;
+import ru.vood.templatePlugin.generated.fromXSD.PluginTines;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
